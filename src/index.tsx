@@ -1,5 +1,6 @@
-export default {
-  multiply(a: number, b: number) {
-    return Promise.resolve(a * b);
-  },
-};
+import ScalingDot from './dots/ScalingDot';
+import ExpandingDot from './dots/ExpandingDot';
+import SlidingDot from './dots/SlidingDot';
+import SlidingBorder from './dots/SlidingBorder';
+
+export { ScalingDot, ExpandingDot, SlidingBorder, SlidingDot };
