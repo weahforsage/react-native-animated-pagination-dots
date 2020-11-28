@@ -71,8 +71,7 @@ const App = () => {
   const keyExtractor = React.useCallback((item) => item.key, []);
 
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View style={[styles.container, { backgroundColor: '#e7e7e7' }]}>
+    <View style={[styles.container]}>
       <FlatList
         data={INTRO_DATA}
         keyExtractor={keyExtractor}
@@ -83,7 +82,6 @@ const App = () => {
             useNativeDriver: false,
           }
         )}
-        style={{ flex: 1 }}
         pagingEnabled
         horizontal
         decelerationRate={'normal'}
@@ -148,6 +146,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#e7e7e7',
   },
   text: {
     flex: 1,
