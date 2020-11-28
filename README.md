@@ -1,5 +1,5 @@
 # Animated Dots
-<img src="https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/AnimatedDots.gif" height="500">
+<img src="https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/AnimatedDots.gif" height="500" alt="Animated Dots Example">
 
 FlatList animated pagination dots. Some (maybe all)
  ideas and credits goes to
@@ -75,7 +75,11 @@ const SLIDER_DATA = [
 ```
 
 ##Props
+
+
 ###Expanding Dot
+
+
 <table>
 <tbody>
 <tr>
@@ -133,10 +137,16 @@ const SLIDER_DATA = [
 </tr>
 </tbody>
 </table>
-<!-- DivTable.com -->
+
+
 ###Scaling Dot
+
+
 ###Sliding Dot
+
+
 ###Sliding Border
+
 
 ## Contributing
 
