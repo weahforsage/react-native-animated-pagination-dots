@@ -10,6 +10,8 @@ This package does not use any dependencies but Animated API.
 Few days ago I made a reddit [post](https://www.reddit.com/r/reactnative/comments/jxwo54/i_made_a_app_intro_slider_using_rn_animated_and/),
 and people requested to open source it.
 
+For more Copy & Paste stuff, go check [example](https://github.com/weahforsage/react-native-animated-pagination-dots/blob/main/example/src/App.tsx) folder
+
 
 
 ## Installation
