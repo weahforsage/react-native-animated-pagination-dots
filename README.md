@@ -18,7 +18,7 @@ npm install react-native-animated-pagination-dots
 ```
 
 ##Preview
-[Example of Dots]()
+[Example of Dots](https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/AnimatedDots.gif "Example Animated Dots")
 ## Usage
 
 ```js
