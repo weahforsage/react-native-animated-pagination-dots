@@ -82,6 +82,7 @@ const App = () => {
             useNativeDriver: false,
           }
         )}
+        style={styles.flatList}
         pagingEnabled
         horizontal
         decelerationRate={'normal'}
@@ -151,6 +152,9 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
     justifyContent: 'space-evenly',
+  },
+  flatList: {
+    flex: 1,
   },
   dotContainer: {
     justifyContent: 'center',

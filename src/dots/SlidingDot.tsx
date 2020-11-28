@@ -8,40 +8,47 @@ const SlidingDot = ({
   data,
   dotSize,
   containerStyle,
-  paginationDotStyle,
-  paginationIndicatorStyle,
+  dotStyle,
+  slidingIndicatorStyle,
   marginHorizontal,
 }: SlidingDotProps) => {
   const defaultProps = {
+    dotSize: dotSize || 12,
     marginHorizontal: marginHorizontal || 3,
   };
   const inputRange = [-width, 0, width];
   const translateX = scrollX.interpolate({
     inputRange,
     outputRange: [
-      -dotSize + defaultProps.marginHorizontal * 2,
+      -defaultProps.dotSize + defaultProps.marginHorizontal * 2,
       0,
-      dotSize + defaultProps.marginHorizontal * 2,
+      defaultProps.dotSize + defaultProps.marginHorizontal * 2,
     ],
   });
 
   return (
-    <View style={[{ height: dotSize }, styles.containerStyle, containerStyle]}>
+    <View
+      style={[
+        { height: defaultProps.dotSize },
+        styles.containerStyle,
+        containerStyle,
+      ]}
+    >
       <Animated.View
         style={[
           {
-            width: dotSize,
-            height: dotSize,
-            borderRadius: dotSize / 2,
+            width: defaultProps.dotSize,
+            height: defaultProps.dotSize,
+            borderRadius: defaultProps.dotSize / 2,
           },
-          styles.paginationIndicator,
+          styles.slidingIndicatorStyle,
           // eslint-disable-next-line react-native/no-inline-styles
           {
             position: 'absolute',
             marginHorizontal: marginHorizontal,
             transform: [{ translateX }],
           },
-          paginationIndicatorStyle,
+          slidingIndicatorStyle,
         ]}
       />
       {data.map((_item, index) => {
@@ -50,13 +57,13 @@ const SlidingDot = ({
             key={index}
             style={[
               {
-                width: dotSize,
-                height: dotSize,
+                width: defaultProps.dotSize,
+                height: defaultProps.dotSize,
                 marginHorizontal: defaultProps.marginHorizontal,
-                borderRadius: dotSize / 2,
+                borderRadius: defaultProps.dotSize / 2,
               },
-              styles.paginationDot,
-              paginationDotStyle,
+              styles.dotStyle,
+              dotStyle,
             ]}
           />
         );
@@ -72,11 +79,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'center',
   },
-  paginationDot: {
+  dotStyle: {
     backgroundColor: '#347af0',
     opacity: 0.4,
   },
-  paginationIndicator: {
+  slidingIndicatorStyle: {
     backgroundColor: '#347af0',
     zIndex: 99,
     alignItems: 'center',

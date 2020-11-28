@@ -8,29 +8,29 @@ const SlidingBorder = ({
   data,
   dotSize,
   containerStyle,
-  paginationDotStyle,
-  paginationDotContainerStyle,
-  paginationIndicatorStyle,
+  dotStyle,
+  dotContainerStyle,
+  slidingIndicatorStyle,
   borderPadding,
 }: SlidingBorderProps) => {
   const defaultProps = {
-    dotStyle: dotSize || 26,
+    dotSize: dotSize || 24,
     borderPadding: borderPadding || -5,
   };
   const inputRange = [-width, 0, width];
   const translateX = scrollX.interpolate({
     inputRange,
     outputRange: [
-      -defaultProps.dotStyle + defaultProps.borderPadding,
+      -defaultProps.dotSize + defaultProps.borderPadding,
       0,
-      defaultProps.dotStyle + defaultProps.borderPadding,
+      defaultProps.dotSize + defaultProps.borderPadding,
     ],
   });
 
   return (
     <View
       style={[
-        { height: defaultProps.dotStyle },
+        { height: defaultProps.dotSize },
         styles.container,
         containerStyle,
       ]}
@@ -38,18 +38,18 @@ const SlidingBorder = ({
       <Animated.View
         style={[
           {
-            width: defaultProps.dotStyle + defaultProps.borderPadding,
-            height: defaultProps.dotStyle + defaultProps.borderPadding,
+            width: defaultProps.dotSize + defaultProps.borderPadding,
+            height: defaultProps.dotSize + defaultProps.borderPadding,
             borderRadius:
-              (defaultProps.dotStyle + defaultProps.borderPadding) / 2,
+              (defaultProps.dotSize + defaultProps.borderPadding) / 2,
           },
-          styles.paginationIndicator,
+          styles.slidingIndicatorStyle,
           // eslint-disable-next-line react-native/no-inline-styles
           {
             position: 'absolute',
             transform: [{ translateX }],
           },
-          paginationIndicatorStyle,
+          slidingIndicatorStyle,
         ]}
       />
       {data.map((_item, index) => {
@@ -58,21 +58,21 @@ const SlidingBorder = ({
             key={index}
             style={[
               {
-                width: defaultProps.dotStyle + defaultProps.borderPadding,
+                width: defaultProps.dotSize + defaultProps.borderPadding,
               },
-              styles.paginationDotContainer,
-              paginationDotContainerStyle,
+              styles.dotContainerStyle,
+              dotContainerStyle,
             ]}
           >
             <View
               style={[
                 {
-                  width: defaultProps.dotStyle / 2,
-                  height: defaultProps.dotStyle / 2,
-                  borderRadius: defaultProps.dotStyle / 4,
+                  width: defaultProps.dotSize / 2,
+                  height: defaultProps.dotSize / 2,
+                  borderRadius: defaultProps.dotSize / 4,
                 },
-                styles.paginationDot,
-                paginationDotStyle,
+                styles.dotStyle,
+                dotStyle,
               ]}
             />
           </View>
@@ -89,14 +89,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'center',
   },
-  paginationDot: {
+  dotStyle: {
     backgroundColor: '#347af0',
   },
-  paginationDotContainer: {
+  dotContainerStyle: {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  paginationIndicator: {
+  slidingIndicatorStyle: {
     borderWidth: 1,
     borderColor: '#347af0',
     alignItems: 'center',
