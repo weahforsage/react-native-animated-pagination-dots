@@ -1,4 +1,5 @@
-# react-native-animated-pagination-dots
+# Animated Dots
+<img src="https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/AnimatedDots.gif" height="500">
 
 FlatList animated pagination dots. Some (maybe all)
  ideas and credits goes to
@@ -17,8 +18,6 @@ and people requested to open source it.
 npm install react-native-animated-pagination-dots
 ```
 
-##Preview
-[Example of Dots](https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/AnimatedDots.gif "Example Animated Dots")
 ## Usage
 
 ```js
@@ -74,6 +73,70 @@ const SLIDER_DATA = [
     }}
 />
 ```
+
+##Props
+###Expanding Dot
+<table>
+<tbody>
+<tr>
+<td><strong>Name&nbsp;</strong></td>
+<td><strong>Type&nbsp;</strong></td>
+<td><strong>Default&nbsp;</strong></td>
+<td><strong>Description&nbsp;</strong></td>
+</tr>
+<tr>
+<td>inActiveDotOpacity</td>
+<td>number</td>
+<td>0.5</td>
+<td>In active dot opacity</td>
+</tr>
+<tr>
+<td>expandingDotWidth</td>
+<td>number</td>
+<td>20</td>
+<td>Active dot width</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array&lt;Object&gt;</td>
+<td>required</td>
+<td>Array which is used for flatlist iteration</td>
+</tr>
+<tr>
+<td>scrollX</td>
+<td>Animated.Value</td>
+<td>required</td>
+<td>
+<p>Gestures, like panning or scrolling, and other events can map directly to animated values using Animated.event().</p>
+<p>For example, when working with horizontal scrolling gestures, you would do the following in order to map event.nativeEvent.contentOffset.x to scrollX (an Animated.Value)</p>
+</td>
+</tr>
+<tr>
+<td>dotStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>width: 10,<br />height: 10,<br />backgroundColor: '#347af0',<br />borderRadius: 5,<br />marginHorizontal: 5</pre>
+</td>
+<td>
+<p>Basic styling for each dot.</p>
+</td>
+</tr>
+<tr>
+<td>containerStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>position: "absolute",<br />bottom: 20,<br />flexDirection: "row",</pre>
+</td>
+<td>
+<p>Basic styling for dots container.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- DivTable.com -->
+###Scaling Dot
+###Sliding Dot
+###Sliding Border
 
 ## Contributing
 
