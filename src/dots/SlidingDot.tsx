@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Dimensions, StyleSheet, Animated } from 'react-native';
-import type { SlidingDotProps } from './dist/types';
+import type { SlidingDotProps } from 'src/dots/dist/types'
 
 const { width } = Dimensions.get('screen');
 const SlidingDot = ({
