@@ -71,6 +71,7 @@ const App = () => {
   const keyExtractor = React.useCallback((item) => item.key, []);
 
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <View style={[styles.container, { backgroundColor: '#e7e7e7' }]}>
       <FlatList
         data={INTRO_DATA}
@@ -89,7 +90,7 @@ const App = () => {
         scrollEventThrottle={16}
         renderItem={renderItem}
       />
-      <View style={{ flex: 1, justifyContent: 'space-evenly' }}>
+      <View style={styles.text}>
         <View style={styles.dotContainer}>
           <Text>Expanding Dot</Text>
           <ExpandingDot
@@ -147,6 +148,10 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  text: {
+    flex: 1,
+    justifyContent: 'space-evenly',
   },
   dotContainer: {
     justifyContent: 'center',
