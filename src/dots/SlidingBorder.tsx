@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Dimensions, StyleSheet, Animated } from 'react-native';
-import type { SlidingBorderProps } from '../../lib/typescript/src';
+import type { SlidingBorderProps } from './dist/types';
 
 const { width } = Dimensions.get('screen');
 const SlidingBorder = ({

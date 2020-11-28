@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Dimensions, Animated, StyleSheet } from 'react-native';
-import type { ExpandingDotProps } from '../../lib/typescript/src';
+import type { ExpandingDotProps } from './dist/types';
 
 const { width } = Dimensions.get('screen');
 

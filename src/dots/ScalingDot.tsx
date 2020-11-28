@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Dimensions, Animated, StyleSheet } from 'react-native';
-import type { ScalingDotProps } from '../../lib/typescript/src';
+import type { ScalingDotProps } from './dist/types';
 
 const { width } = Dimensions.get('screen');
 

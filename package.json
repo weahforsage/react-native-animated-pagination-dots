@@ -4,7 +4,7 @@
   "description": "FlatList animated pagination dots",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
-  "types": "lib/typescript/src/index.d.ts",
+  "types": "src/dots/dist/types",
   "react-native": "src/index",
   "source": "src/index",
   "files": [
