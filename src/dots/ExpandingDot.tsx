@@ -13,7 +13,6 @@ const ExpandingDot = ({
   expandingDotWidth,
 }: ExpandingDotProps) => {
   const defaultProps = {
-    animationType: 'scale',
     inActiveDotOpacity: inActiveDotOpacity || 0.5,
     expandingDotWidth: expandingDotWidth || 20,
     dotWidth: (dotStyle.width as number) || 10,

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # react-native-animated-pagination-dots
 
 Flatlist animated pagination dots
@@ -25,3 +26,6 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
+=======
+# react-native-animated-dot
+>>>>>>> 2287c4dd1b3c46431b41b93c1df57d353f2bfd54
