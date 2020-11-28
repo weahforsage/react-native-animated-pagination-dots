@@ -74,10 +74,10 @@ const SLIDER_DATA = [
 />
 ```
 
-##Props
+## Props
 
 
-###Expanding Dot
+### Expanding Dot
 
 
 <table>
@@ -139,14 +139,202 @@ const SLIDER_DATA = [
 </table>
 
 
-###Scaling Dot
+### Scaling Dot
+<table>
+<tbody>
+<tr>
+<td><strong>Name&nbsp;</strong></td>
+<td><strong>Type&nbsp;</strong></td>
+<td><strong>Default&nbsp;</strong></td>
+<td><strong>Description&nbsp;</strong></td>
+</tr>
+<tr>
+<td>activeDotScale</td>
+<td>number</td>
+<td>1.4</td>
+<td>Active dot scale number</td>
+</tr>
+<tr>
+<td>inActiveDotOpacity</td>
+<td>number</td>
+<td>0.5</td>
+<td>In active dot opacity</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array&lt;Object&gt;</td>
+<td>required</td>
+<td>Array which is used for flatlist iteration</td>
+</tr>
+<tr>
+<td>scrollX</td>
+<td>Animated.Value</td>
+<td>required</td>
+<td>
+<p>Gestures, like panning or scrolling, and other events can map directly to animated values using Animated.event().</p>
+<p>For example, when working with horizontal scrolling gestures, you would do the following in order to map event.nativeEvent.contentOffset.x to scrollX (an Animated.Value)</p>
+</td>
+</tr>
+<tr>
+<td>dotStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>width: 10,<br />height: 10,<br />backgroundColor: '#347af0',<br />borderRadius: 5,<br />marginHorizontal: 5</pre>
+</td>
+<td>
+<p>Basic styling for each dot.</p>
+</td>
+</tr>
+<tr>
+<td>containerStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>position: "absolute",<br />bottom: 20,<br />flexDirection: "row",</pre>
+</td>
+<td>
+<p>Basic styling for dots container.</p>
+</td>
+</tr>
+</tbody>
+</table>
 
+### Sliding Dot
+<table>
+<tbody>
+<tr>
+<td><strong>Name&nbsp;</strong></td>
+<td><strong>Type&nbsp;</strong></td>
+<td><strong>Default&nbsp;</strong></td>
+<td><strong>Description&nbsp;</strong></td>
+</tr>
+<tr>
+<td>dotSize</td>
+<td>number</td>
+<td>12</td>
+<td>Each dot size !<strong>IMPORTANT</strong> Do not adjust dot size through dotStyle,&nbsp;otherwise it'll&nbsp;misbehave</td>
+</tr>
+<tr>
+<td>marginHorizontal</td>
+<td>number</td>
+<td>3</td>
+<td>Margin between dots&nbsp;!<strong>IMPORTANT</strong> Do not adjust dot <strong>margin</strong> through dotStyle, otherwise it'll&nbsp;misbehave</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array&lt;Object&gt;</td>
+<td>required</td>
+<td>Array which is used for flatlist iteration</td>
+</tr>
+<tr>
+<td>scrollX</td>
+<td>Animated.Value</td>
+<td>required</td>
+<td>
+<p>Gestures, like panning or scrolling, and other events can map directly to animated values using Animated.event().</p>
+<p>For example, when working with horizontal scrolling gestures, you would do the following in order to map event.nativeEvent.contentOffset.x to scrollX (an Animated.Value)</p>
+</td>
+</tr>
+<tr>
+<td>dotStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>backgroundColor: '#347af0',<br />opacity: 0.4,</pre>
+</td>
+<td>
+<p>Basic styling for each dot.</p>
+</td>
+</tr>
+<tr>
+<td>containerStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>position: "absolute",<br />bottom: 30,<br />flexDirection: "row",<br />alignSelf: "center"</pre>
+</td>
+<td>
+<p>Basic styling for dots container.</p>
+</td>
+</tr>
+<tr>
+<td>slidingIndicatorStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>backgroundColor: '#347af0',<br />zIndex: 99,<br />alignItems: 'center',<br />justifyContent: 'center',<br />alignSelf: 'center'</pre>
+</td>
+<td>
+<p>Basic styling for Sliding indicator dot.</p>
+</td>
+</tr>
+</tbody>
+</table>
 
-###Sliding Dot
-
-
-###Sliding Border
-
+### Sliding Border
+<table>
+<tbody>
+<tr>
+<td><strong>Name&nbsp;</strong></td>
+<td><strong>Type&nbsp;</strong></td>
+<td><strong>Default&nbsp;</strong></td>
+<td><strong>Description&nbsp;</strong></td>
+</tr>
+<tr>
+<td>dotSize</td>
+<td>number</td>
+<td>24</td>
+<td>Each dot size !<strong>IMPORTANT</strong> Do not adjust dot size through dotStyle,&nbsp;otherwise it'll&nbsp;misbehave</td>
+</tr>
+<tr>
+<td>borderPadding</td>
+<td>number</td>
+<td>-5</td>
+<td>Padding between dot and border. Should be good between -5 and 3, test it out.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array&lt;Object&gt;</td>
+<td>required</td>
+<td>Array which is used for flatlist iteration</td>
+</tr>
+<tr>
+<td>scrollX</td>
+<td>Animated.Value</td>
+<td>required</td>
+<td>
+<p>Gestures, like panning or scrolling, and other events can map directly to animated values using Animated.event().</p>
+<p>For example, when working with horizontal scrolling gestures, you would do the following in order to map event.nativeEvent.contentOffset.x to scrollX (an Animated.Value)</p>
+</td>
+</tr>
+<tr>
+<td>dotStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>backgroundColor: '#347af0'</pre>
+</td>
+<td>
+<p>Basic styling for each dot.</p>
+</td>
+</tr>
+<tr>
+<td>containerStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>position: "absolute",<br />bottom: 20,<br />flexDirection: "row",<br />alignSelf: "center"</pre>
+</td>
+<td>
+<p>Basic styling for dots container.</p>
+</td>
+</tr>
+<tr>
+<td>slidingIndicatorStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>borderWidth: 1,<br />borderColor: '#347af0',<br />alignItems: 'center',<br />justifyContent: 'center',<br />alignSelf: 'center'</pre>
+</td>
+<td>
+<p>Basic styling for sliding bordered dot style.</p>
+</td>
+</tr>
+</tbody>
+</table>
 
 ## Contributing
 
