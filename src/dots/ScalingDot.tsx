@@ -1,6 +1,20 @@
 import React from 'react';
-import { View, Dimensions, Animated, StyleSheet } from 'react-native';
-import type { ScalingDotProps } from 'src/dots/dist/types';
+import {
+  View,
+  Dimensions,
+  Animated,
+  StyleSheet,
+  ViewStyle,
+} from 'react-native';
+
+export interface ScalingDotProps {
+  data: Array<Object>;
+  scrollX: Animated.Value;
+  containerStyle?: ViewStyle;
+  dotStyle?: ViewStyle;
+  inActiveDotOpacity?: number;
+  activeDotScale?: number;
+}
 
 const { width } = Dimensions.get('screen');
 

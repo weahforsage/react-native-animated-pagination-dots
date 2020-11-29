@@ -1,6 +1,22 @@
 import React from 'react';
-import { View, Dimensions, StyleSheet, Animated } from 'react-native';
-import type { SlidingDotProps } from 'src/dots/dist/types'
+import {
+  View,
+  Dimensions,
+  StyleSheet,
+  Animated,
+  ViewStyle,
+} from 'react-native';
+
+export interface SlidingDotProps {
+  data: Array<Object>;
+  scrollX: Animated.Value;
+  dotSize?: number;
+  containerStyle?: ViewStyle;
+  dotStyle?: ViewStyle;
+  dotContainerStyle?: ViewStyle;
+  slidingIndicatorStyle?: ViewStyle;
+  marginHorizontal?: number;
+}
 
 const { width } = Dimensions.get('screen');
 const SlidingDot = ({

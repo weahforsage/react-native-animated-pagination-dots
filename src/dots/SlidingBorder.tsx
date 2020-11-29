@@ -1,6 +1,22 @@
 import React from 'react';
-import { View, Dimensions, StyleSheet, Animated } from 'react-native';
-import type { SlidingBorderProps } from 'src/dots/dist/types'
+import {
+  View,
+  Dimensions,
+  StyleSheet,
+  Animated,
+  ViewStyle,
+} from 'react-native';
+
+export interface SlidingBorderProps {
+  data: Array<Object>;
+  scrollX: Animated.Value;
+  dotSize?: number;
+  borderPadding?: number;
+  containerStyle?: ViewStyle;
+  dotStyle?: ViewStyle;
+  dotContainerStyle?: ViewStyle;
+  slidingIndicatorStyle?: ViewStyle;
+}
 
 const { width } = Dimensions.get('screen');
 const SlidingBorder = ({
