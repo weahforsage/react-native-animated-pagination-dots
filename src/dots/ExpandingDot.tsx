@@ -13,6 +13,7 @@ export interface ExpandingDotProps {
   containerStyle: ViewStyle;
   dotStyle: ViewStyle;
   inActiveDotOpacity?: number;
+  inActiveDotColor?: string;
   expandingDotWidth?: number;
 }
 
@@ -24,9 +25,11 @@ const ExpandingDot = ({
   dotStyle,
   containerStyle,
   inActiveDotOpacity,
+  inActiveDotColor,
   expandingDotWidth,
 }: ExpandingDotProps) => {
   const defaultProps = {
+    inActiveDotColor: inActiveDotColor || dotStyle.backgroundColor.toString(),
     inActiveDotOpacity: inActiveDotOpacity || 0.5,
     expandingDotWidth: expandingDotWidth || 20,
     dotWidth: (dotStyle.width as number) || 10,
@@ -41,6 +44,15 @@ const ExpandingDot = ({
           (index + 1) * width,
         ];
 
+        const colour = scrollX.interpolate({
+          inputRange,
+          outputRange: [
+            defaultProps.inActiveDotColor,
+            dotStyle.backgroundColor.toString(),
+            defaultProps.inActiveDotColor,
+          ],
+          extrapolate: 'clamp',
+        });
         const opacity = scrollX.interpolate({
           inputRange,
           outputRange: [
@@ -63,7 +75,7 @@ const ExpandingDot = ({
         return (
           <Animated.View
             key={`dot-${index}`}
-            style={[styles.dotStyle, dotStyle, { width: expand }, { opacity }]}
+            style={[styles.dotStyle, dotStyle, { width: expand }, { opacity }, { backgroundColor: colour }]}
           />
         );
       })}

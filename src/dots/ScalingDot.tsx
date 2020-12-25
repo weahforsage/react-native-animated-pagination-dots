@@ -13,6 +13,7 @@ export interface ScalingDotProps {
   containerStyle?: ViewStyle;
   dotStyle?: ViewStyle;
   inActiveDotOpacity?: number;
+  inActiveDotColor?: string;
   activeDotScale?: number;
 }
 
@@ -24,9 +25,11 @@ const ScalingDot = ({
   dotStyle,
   containerStyle,
   inActiveDotOpacity,
+  inActiveDotColor,
   activeDotScale,
 }: ScalingDotProps) => {
   const defaultProps = {
+    inActiveDotColor: inActiveDotColor || dotStyle.backgroundColor.toString(),
     animationType: 'scale',
     inActiveDotOpacity: inActiveDotOpacity || 0.5,
     activeDotScale: activeDotScale || 1.4,
@@ -41,6 +44,15 @@ const ScalingDot = ({
           (index + 1) * width,
         ];
 
+        const colour = scrollX.interpolate({
+          inputRange,
+          outputRange: [
+            defaultProps.inActiveDotColor,
+            dotStyle.backgroundColor.toString(),
+            defaultProps.inActiveDotColor,
+          ],
+          extrapolate: 'clamp',
+        });
         const opacity = scrollX.interpolate({
           inputRange,
           outputRange: [
@@ -64,6 +76,7 @@ const ScalingDot = ({
               { opacity },
               { transform: [{ scale }] },
               dotStyle,
+              { backgroundColor: colour },
             ]}
           />
         );
