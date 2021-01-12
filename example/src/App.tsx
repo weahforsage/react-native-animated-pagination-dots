@@ -12,6 +12,7 @@ import {
   SlidingBorder,
   ExpandingDot,
   SlidingDot,
+  LiquidLike,
 } from 'react-native-animated-pagination-dots';
 
 const INTRO_DATA = [
@@ -43,29 +44,17 @@ const INTRO_DATA = [
 const App = () => {
   const { width } = Dimensions.get('screen');
   const scrollX = React.useRef(new Animated.Value(0)).current;
+  const scrollY = React.useRef(new Animated.Value(0)).current;
   const renderItem = React.useCallback(
-    ({ item, index }) => {
-      const inputRange = [
-        (index - 1) * width,
-        index * width,
-        (index + 1) * width,
-      ];
-      const descriptionTranslate = scrollX.interpolate({
-        inputRange,
-        outputRange: [width * 0.1, 0, -width * 0.1],
-      });
+    ({ item }) => {
       return (
         <View style={[styles.itemContainer, { width: width - 80 }]}>
           <Text>{item.title}</Text>
-          <Animated.Text
-            style={{ transform: [{ translateX: descriptionTranslate }] }}
-          >
-            {item.description}
-          </Animated.Text>
+          <Animated.Text>{item.description}</Animated.Text>
         </View>
       );
     },
-    [scrollX, width]
+    [width]
   );
 
   const keyExtractor = React.useCallback((item) => item.key, []);
@@ -77,7 +66,7 @@ const App = () => {
         keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
         onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          [{ nativeEvent: { contentOffset: { x: scrollX, y: scrollY } } }],
           {
             useNativeDriver: false,
           }
@@ -137,6 +126,21 @@ const App = () => {
             data={INTRO_DATA}
             scrollX={scrollX}
             dotSize={12}
+          />
+        </View>
+        <View style={styles.dotContainer}>
+          <Text>Liquid Like</Text>
+          <LiquidLike
+            data={INTRO_DATA}
+            scrollX={scrollX}
+            dotSize={12}
+            dotSpacing={4}
+            lineDistance={5}
+            lineHeight={3}
+            inActiveDotOpacity={0.3}
+            containerStyle={{
+              top: 10,
+            }}
           />
         </View>
       </View>
