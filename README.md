@@ -358,6 +358,94 @@ const SLIDER_DATA = [
 </tbody>
 </table>
 
+### Liquid Like
+<table>
+<tbody>
+<tr>
+<td><strong>Name&nbsp;</strong></td>
+<td><strong>Type&nbsp;</strong></td>
+<td><strong>Default&nbsp;</strong></td>
+<td><strong>Description&nbsp;</strong></td>
+</tr>
+<tr>
+<td>dotSize</td>
+<td>number</td>
+<td>12</td>
+<td>Each dot size </td>
+</tr>
+<tr>
+<td>dotSpacing</td>
+<td>number</td>
+<td>3</td>
+<td>Margin between dots</td>
+</tr>
+<tr>
+<td>inActiveDotOpacity</td>
+<td>number</td>
+<td>0.5</td>
+<td>In active dot opacity</td>
+</tr>
+<tr>
+<td>inActiveDotColor</td>
+<td>string</td>
+<td>#000</td>
+<td>In active dot color</td>
+</tr>
+<tr>
+<td>activeDotColor</td>
+<td>string</td>
+<td>#347af0</td>
+<td>Active dot color</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Array&lt;Object&gt;</td>
+<td>required</td>
+<td>Array which is used for flatlist iteration</td>
+</tr>
+<tr>
+<td>scrollX</td>
+<td>Animated.Value</td>
+<td>required</td>
+<td>
+<p>Gestures, like panning or scrolling, and other events can map directly to animated values using Animated.event().</p>
+<p>For example, when working with horizontal scrolling gestures, you would do the following in order to map event.nativeEvent.contentOffset.x to scrollX (an Animated.Value)</p>
+</td>
+</tr>
+<tr>
+<td>lineHeight</td>
+<td>number</td>
+<td>
+<p>4</p>
+</td>
+<td>
+<p>Line height for sliding dot</p>
+</td>
+</tr>
+<tr>
+<td>lineDistance</td>
+<td>number</td>
+<td>
+<p>8</p>
+</td>
+<td>
+<p>Line travel distance between dots</p>
+</td>
+</tr>
+<tr>
+<td>containerStyle</td>
+<td>ViewStyle</td>
+<td>
+<pre>flexDirection: "row"</pre>
+</td>
+<td>
+<p>Basic styling for dots container.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
