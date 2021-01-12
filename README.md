@@ -12,7 +12,27 @@ and people requested to open source it.
 
 For more Copy & Paste stuff, go check [example](https://github.com/weahforsage/react-native-animated-pagination-dots/blob/main/example/src/App.tsx) folder
 
-
+## TODO
+<ul>
+    <li>
+        iOS Device Test
+    </li>
+    <li>
+        Worm Dot Indicator
+    </li>
+    <li>
+        <strike>Liquid Like Indicator</strike>
+    </li>
+    <li>
+        Next, Prev, Skip button implementation
+    </li>
+    <li>
+        Landscape test
+    </li>
+     <li>
+        Dots direction such as Vertical and Horizontal
+     </li>
+</ul>
 
 ## Installation
 
