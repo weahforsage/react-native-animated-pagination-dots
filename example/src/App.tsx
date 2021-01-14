@@ -44,7 +44,6 @@ const INTRO_DATA = [
 const App = () => {
   const { width } = Dimensions.get('screen');
   const scrollX = React.useRef(new Animated.Value(0)).current;
-  const scrollY = React.useRef(new Animated.Value(0)).current;
   const renderItem = React.useCallback(
     ({ item }) => {
       return (
@@ -56,9 +55,7 @@ const App = () => {
     },
     [width]
   );
-
   const keyExtractor = React.useCallback((item) => item.key, []);
-
   return (
     <View style={[styles.container]}>
       <FlatList
@@ -66,7 +63,7 @@ const App = () => {
         keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
         onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX, y: scrollY } } }],
+          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           {
             useNativeDriver: false,
           }
