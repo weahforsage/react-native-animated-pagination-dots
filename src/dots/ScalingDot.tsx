@@ -15,6 +15,7 @@ export interface ScalingDotProps {
   inActiveDotOpacity?: number;
   inActiveDotColor?: string;
   activeDotScale?: number;
+  activeDotColor?: string;
 }
 
 const { width } = Dimensions.get('screen');
@@ -27,9 +28,11 @@ const ScalingDot = ({
   inActiveDotOpacity,
   inActiveDotColor,
   activeDotScale,
+  activeDotColor,
 }: ScalingDotProps) => {
   const defaultProps = {
-    inActiveDotColor: inActiveDotColor || dotStyle.backgroundColor.toString(),
+    inActiveDotColor: inActiveDotColor || '#347af0',
+    activeDotColor: activeDotColor || '#347af0',
     animationType: 'scale',
     inActiveDotOpacity: inActiveDotOpacity || 0.5,
     activeDotScale: activeDotScale || 1.4,
@@ -48,7 +51,7 @@ const ScalingDot = ({
           inputRange,
           outputRange: [
             defaultProps.inActiveDotColor,
-            dotStyle.backgroundColor.toString(),
+            defaultProps.activeDotColor,
             defaultProps.inActiveDotColor,
           ],
           extrapolate: 'clamp',
@@ -95,7 +98,6 @@ const styles = StyleSheet.create({
   dotStyle: {
     width: 10,
     height: 10,
-    backgroundColor: '#347af0',
     borderRadius: 5,
     marginHorizontal: 5,
   },

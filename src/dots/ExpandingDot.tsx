@@ -75,7 +75,13 @@ const ExpandingDot = ({
         return (
           <Animated.View
             key={`dot-${index}`}
-            style={[styles.dotStyle, dotStyle, { width: expand }, { opacity }, { backgroundColor: colour }]}
+            style={[
+              styles.dotStyle,
+              dotStyle,
+              { width: expand },
+              { opacity },
+              { backgroundColor: colour },
+            ]}
           />
         );
       })}
