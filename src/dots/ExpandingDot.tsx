@@ -15,6 +15,7 @@ export interface ExpandingDotProps {
   inActiveDotOpacity?: number;
   inActiveDotColor?: string;
   expandingDotWidth?: number;
+  activeDotColor?: string;
 }
 
 const { width } = Dimensions.get('screen');
@@ -27,12 +28,14 @@ const ExpandingDot = ({
   inActiveDotOpacity,
   inActiveDotColor,
   expandingDotWidth,
+  activeDotColor,
 }: ExpandingDotProps) => {
   const defaultProps = {
-    inActiveDotColor: inActiveDotColor || dotStyle.backgroundColor.toString(),
+    inActiveDotColor: inActiveDotColor || '#000',
     inActiveDotOpacity: inActiveDotOpacity || 0.5,
     expandingDotWidth: expandingDotWidth || 20,
     dotWidth: (dotStyle.width as number) || 10,
+    activeDotColor: activeDotColor || '#347af0',
   };
 
   return (
@@ -48,7 +51,7 @@ const ExpandingDot = ({
           inputRange,
           outputRange: [
             defaultProps.inActiveDotColor,
-            dotStyle.backgroundColor.toString(),
+            defaultProps.activeDotColor,
             defaultProps.inActiveDotColor,
           ],
           extrapolate: 'clamp',
@@ -98,7 +101,6 @@ const styles = StyleSheet.create({
   dotStyle: {
     width: 10,
     height: 10,
-    backgroundColor: '#347af0',
     borderRadius: 5,
     marginHorizontal: 5,
   },
