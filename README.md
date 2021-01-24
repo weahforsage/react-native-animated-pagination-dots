@@ -1,4 +1,5 @@
-# Animated Dots
+# React Native Animated Pagination Dots
+<img src="https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/Github_cover_preview.gif" alt="Animated Dots Example">
 <img src="https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/AnimatedDots.gif" height="400" alt="Animated Dots Example">
 
 FlatList animated pagination dots. Some (maybe all)
