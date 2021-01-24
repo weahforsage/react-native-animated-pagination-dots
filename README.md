@@ -1,12 +1,12 @@
 # Animated Dots
 <img src="https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/AnimatedDots.gif" height="400" alt="Animated Dots Example">
-<img src="https://raw.githubusercontent.com/weahforsage/react-native-animated-pagination-dots/main/example/ButtonNavigationExample.gif" height="400" alt="Button Navigation">
 
 FlatList animated pagination dots. Some (maybe all)
  ideas and credits goes to
  [Catalin Miron](https://www.youtube.com/channel/UCTcH04SRuyedaSuuQVeAcdg) 👏.
 
-This package does not use any dependencies but Animated API.
+<strike>This package does not use any dependencies but Animated API.</strike>
+Now uses `react-native-svg` for the LiquidLike
 
 Few days ago I made a reddit [post](https://www.reddit.com/r/reactnative/comments/jxwo54/i_made_a_app_intro_slider_using_rn_animated_and/),
 and people requested to open source it.
@@ -19,13 +19,13 @@ For more Copy & Paste stuff, go check [example](https://github.com/weahforsage/r
         iOS Device Test
     </li>
     <li>
-        Worm Dot Indicator
+        <strike>Worm Dot Indicator</strike>
     </li>
     <li>
         <strike>Liquid Like Indicator</strike>
     </li>
     <li>
-        Next, Prev, Skip button implementation
+        <strike>Next, Prev, Skip button implementation</strike>
     </li>
     <li>
         Landscape test
