@@ -12,7 +12,6 @@ import {
   SlidingBorder,
   ExpandingDot,
   SlidingDot,
-  LiquidLike,
 } from 'react-native-animated-pagination-dots';
 
 const INTRO_DATA = [
@@ -36,6 +35,18 @@ const INTRO_DATA = [
   },
   {
     key: '4',
+    title: 'And can be anything 🎈',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ',
+  },
+  {
+    key: '5',
+    title: 'And can be anything 🎈',
+    description:
+      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ',
+  },
+  {
+    key: '6',
     title: 'And can be anything 🎈',
     description:
       'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ',
@@ -82,13 +93,14 @@ const App = () => {
             data={INTRO_DATA}
             expandingDotWidth={30}
             scrollX={scrollX}
-            inActiveDotOpacity={0.6}
+            inActiveDotColor={'#347af0'}
+            activeDotColor={'#347af0'}
+            inActiveDotOpacity={0.5}
             dotStyle={{
               width: 10,
               height: 10,
-              backgroundColor: '#347af0',
               borderRadius: 5,
-              marginHorizontal: 5,
+              marginHorizontal: 3,
             }}
             containerStyle={{
               top: 30,
@@ -103,6 +115,8 @@ const App = () => {
             containerStyle={{
               top: 30,
             }}
+            inActiveDotColor={'#347af0'}
+            activeDotColor={'#347af0'}
           />
         </View>
 
@@ -113,7 +127,9 @@ const App = () => {
             data={INTRO_DATA}
             scrollX={scrollX}
             dotSize={24}
+            borderPadding={-5}
           />
+          {/*<Pagination data={INTRO_DATA} scrollX={scrollX} />*/}
         </View>
         <View style={styles.dotContainer}>
           <Text>Sliding Dot</Text>
@@ -123,21 +139,6 @@ const App = () => {
             data={INTRO_DATA}
             scrollX={scrollX}
             dotSize={12}
-          />
-        </View>
-        <View style={styles.dotContainer}>
-          <Text>Liquid Like</Text>
-          <LiquidLike
-            data={INTRO_DATA}
-            scrollX={scrollX}
-            dotSize={12}
-            dotSpacing={4}
-            lineDistance={5}
-            lineHeight={3}
-            inActiveDotOpacity={0.3}
-            containerStyle={{
-              top: 10,
-            }}
           />
         </View>
       </View>
@@ -169,32 +170,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginHorizontal: 40,
     borderRadius: 20,
-  },
-  imageSlider: {
-    flex: 1,
-  },
-  viewPager: {
-    flex: 1,
-  },
-  contentSlider: {
-    flex: 1,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-  },
-  dots: {
-    flex: 1,
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 310,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    margin: 5,
   },
 });
 

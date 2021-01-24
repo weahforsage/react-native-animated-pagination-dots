@@ -16,22 +16,18 @@ const data = [
   {
     image:
       'https://cdn.dribbble.com/users/3281732/screenshots/13661330/media/1d9d3cd01504fa3f5ae5016e5ec3a313.jpg?compress=1&resize=1200x1200',
-    backgroundColor: '#7bcf6e',
   },
   {
     image:
       'https://cdn.dribbble.com/users/3281732/screenshots/11192830/media/7690704fa8f0566d572a085637dd1eee.jpg?compress=1&resize=1200x1200',
-    backgroundColor: '#4654a7',
   },
   {
     image:
       'https://cdn.dribbble.com/users/3281732/screenshots/9165292/media/ccbfbce040e1941972dbc6a378c35e98.jpg?compress=1&resize=1200x1200',
-    backgroundColor: '#7370cf',
   },
   {
     image:
       'https://cdn.dribbble.com/users/3281732/screenshots/11205211/media/44c854b0a6e381340fbefe276e03e8e4.jpg?compress=1&resize=1200x1200',
-    backgroundColor: '#db4747',
   },
 ];
 
@@ -40,11 +36,21 @@ const imageH = imageW * 1.4;
 
 const ButtonNavigation = () => {
   const scrollX = React.useRef(new Animated.Value(0)).current;
+  let scrollOffset = React.useRef(new Animated.Value(0)).current;
   const keyExtractor = React.useCallback((_, index) => index.toString(), []);
-  //Current item index of flatlist
+  //Current item index of FlatList
   const [activeIndex, setActiveIndex] = React.useState(0);
   let flatListRef = React.useRef(null);
   const gotoNextPage = () => {
+    const gotoNextIndex = () => {
+      if (activeIndex === 0) {
+        return width;
+      } else if (activeIndex === data.length - 1) {
+        return width * activeIndex;
+      } else {
+        return width * (activeIndex + 1);
+      }
+    };
     if (activeIndex + 1 < data.length) {
       // @ts-ignore
       flatListRef.current.scrollToIndex({
@@ -52,8 +58,15 @@ const ButtonNavigation = () => {
         animated: true,
       });
     }
+    scrollOffset.setValue(gotoNextIndex());
   };
   const gotoPrevPage = () => {
+    const gotoPrevIndex = () => {
+      if (activeIndex === 0) {
+        return 0;
+      }
+      return width * (activeIndex - 1);
+    };
     if (activeIndex !== 0) {
       // @ts-ignore
       flatListRef.current.scrollToIndex({
@@ -61,6 +74,7 @@ const ButtonNavigation = () => {
         animated: true,
       });
     }
+    scrollOffset.setValue(gotoPrevIndex());
   };
   const skipToStart = () => {
     // @ts-ignore
@@ -68,49 +82,40 @@ const ButtonNavigation = () => {
       index: data.length - 1,
       animated: true,
     });
+    scrollOffset.setValue(width * (data.length - 1));
   };
-  //Flatlist props that calculates current item index
+  //FlatList props that calculates current item index from viewableItems
   const onViewRef = React.useRef(({ viewableItems }: any) => {
-    setActiveIndex(viewableItems[0].index);
+    setActiveIndex(viewableItems[0]?.index);
   });
-  const viewConfigRef = React.useRef({ viewAreaCoveragePercentThreshold: 50 });
+  const viewConfigRef = React.useRef({
+    itemVisiblePercentThreshold: 50,
+  });
   const renderItem = React.useCallback(({ item }) => {
     return (
       <View style={[styles.itemContainer]}>
         <Animated.Image
-          style={{
-            width: imageW,
-            height: imageH,
-            borderRadius: 20,
-            resizeMode: 'cover',
-          }}
+          style={[
+            {
+              width: imageW,
+              height: imageH,
+            },
+            styles.image,
+          ]}
           source={{ uri: item.image }}
         />
       </View>
     );
   }, []);
-
   return (
     <View style={[styles.container]}>
       <StatusBar hidden />
       <View style={[StyleSheet.absoluteFillObject]}>
-        {data.map((item, index) => {
-          const inputRange = [
-            (index - 1) * width,
-            index * width,
-            (index + 1) * width,
-          ];
-          const colorFade = scrollX.interpolate({
-            inputRange,
-            outputRange: [0, 1, 0],
-          });
+        {data.map((_, key) => {
           return (
             <Animated.View
-              key={index}
-              style={[
-                StyleSheet.absoluteFillObject,
-                { backgroundColor: item.backgroundColor, opacity: colorFade },
-              ]}
+              key={key}
+              style={[StyleSheet.absoluteFillObject, styles.backgroundFill]}
             />
           );
         })}
@@ -130,6 +135,12 @@ const ButtonNavigation = () => {
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { x: scrollX } } }],
           {
+            useNativeDriver: true,
+          }
+        )}
+        onMomentumScrollEnd={Animated.event(
+          [{ nativeEvent: { contentOffset: { x: scrollOffset } } }],
+          {
             useNativeDriver: false,
           }
         )}
@@ -137,13 +148,12 @@ const ButtonNavigation = () => {
       <LiquidLike
         data={data}
         scrollX={scrollX}
-        dotSize={18}
-        dotSpacing={6}
-        lineDistance={7}
-        lineHeight={4}
-        inActiveDotOpacity={0.2}
+        scrollOffset={scrollOffset}
+        strokeWidth={6}
+        dotSize={24}
+        marginHorizontal={8}
+        inActiveDotOpacity={0.3}
         activeDotColor={'#fff'}
-        containerStyle={{ flex: 1 }}
       />
       <View style={[styles.buttonContainer]}>
         <TouchableOpacity
@@ -171,6 +181,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  image: {
+    borderRadius: 20,
+    resizeMode: 'cover',
+  },
+  backgroundFill: {
+    backgroundColor: '#e71a44',
   },
   itemContainer: {
     flex: 1,
