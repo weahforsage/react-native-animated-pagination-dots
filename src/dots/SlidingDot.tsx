@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  View,
-  Dimensions,
-  StyleSheet,
   Animated,
+  StyleSheet,
+  useWindowDimensions,
+  View,
   ViewStyle,
 } from 'react-native';
-
 export interface SlidingDotProps {
   data: Array<Object>;
   scrollX: Animated.Value;
@@ -18,7 +17,6 @@ export interface SlidingDotProps {
   marginHorizontal?: number;
 }
 
-const { width } = Dimensions.get('screen');
 const SlidingDot = ({
   scrollX,
   data,
@@ -28,6 +26,8 @@ const SlidingDot = ({
   slidingIndicatorStyle,
   marginHorizontal,
 }: SlidingDotProps) => {
+  const { width } = useWindowDimensions();
+
   const defaultProps = {
     dotSize: dotSize || 12,
     marginHorizontal: marginHorizontal || 3,

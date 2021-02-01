@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  View,
-  Dimensions,
   Animated,
   StyleSheet,
+  useWindowDimensions,
+  View,
   ViewStyle,
 } from 'react-native';
-
 export interface ExpandingDotProps {
   data: Array<Object>;
   scrollX: Animated.Value;
@@ -18,8 +17,6 @@ export interface ExpandingDotProps {
   activeDotColor?: string;
 }
 
-const { width } = Dimensions.get('screen');
-
 const ExpandingDot = ({
   scrollX,
   data,
@@ -30,6 +27,8 @@ const ExpandingDot = ({
   expandingDotWidth,
   activeDotColor,
 }: ExpandingDotProps) => {
+  const { width } = useWindowDimensions();
+
   const defaultProps = {
     inActiveDotColor: inActiveDotColor || '#000',
     inActiveDotOpacity: inActiveDotOpacity || 0.5,

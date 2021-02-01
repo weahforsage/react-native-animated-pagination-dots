@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  View,
-  Dimensions,
-  StyleSheet,
   Animated,
+  StyleSheet,
+  useWindowDimensions,
+  View,
   ViewStyle,
 } from 'react-native';
-
 export interface SlidingBorderProps {
   data: Array<Object>;
   scrollX: Animated.Value;
@@ -18,7 +17,6 @@ export interface SlidingBorderProps {
   slidingIndicatorStyle?: ViewStyle;
 }
 
-const { width } = Dimensions.get('screen');
 const SlidingBorder = ({
   scrollX,
   data,
@@ -29,6 +27,8 @@ const SlidingBorder = ({
   slidingIndicatorStyle,
   borderPadding,
 }: SlidingBorderProps) => {
+  const { width } = useWindowDimensions();
+
   const defaultProps = {
     dotSize: dotSize || 24,
     borderPadding: borderPadding || -5,
