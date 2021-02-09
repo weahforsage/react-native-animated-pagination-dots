@@ -44,7 +44,7 @@ yarn add react-native-animated-pagination-dots
 ```
 
 ## Usage
-For the ViewPager, check their own repo. https://github.com/callstack/react-native-viewpager/blob/master/example/src/PaginationDotsExample.tsx
+For the ViewPager, check their own [repo](https://github.com/callstack/react-native-viewpager/blob/master/example/src/PaginationDotsExample.tsx)
 ```js
 import {ExpandingDot} from "react-native-animated-pagination-dots";
 
