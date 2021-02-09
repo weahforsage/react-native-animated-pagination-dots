@@ -29,7 +29,7 @@ For more Copy & Paste stuff, go check [example](https://github.com/weahforsage/r
         <strike>Next, Prev, Skip button implementation</strike>
     </li>
     <li>
-        Landscape test
+        <strike>Landscape test</strike>
     </li>
      <li>
         Dots direction such as Vertical and Horizontal
@@ -40,10 +40,11 @@ For more Copy & Paste stuff, go check [example](https://github.com/weahforsage/r
 
 ```sh
 npm install react-native-animated-pagination-dots
+yarn add react-native-animated-pagination-dots
 ```
 
 ## Usage
-
+For the ViewPager, check their own repo. https://github.com/callstack/react-native-viewpager/blob/master/example/src/PaginationDotsExample.tsx
 ```js
 import {ExpandingDot} from "react-native-animated-pagination-dots";
 
