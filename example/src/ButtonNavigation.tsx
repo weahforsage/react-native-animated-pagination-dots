@@ -2,15 +2,13 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Dimensions,
   Animated,
   TouchableOpacity,
   Text,
   StatusBar,
+  useWindowDimensions,
 } from 'react-native';
 import { LiquidLike } from 'react-native-animated-pagination-dots';
-
-const { width } = Dimensions.get('screen');
 
 const data = [
   {
@@ -31,10 +29,10 @@ const data = [
   },
 ];
 
-const imageW = width * 0.7;
-const imageH = imageW * 1.4;
-
 const ButtonNavigation = () => {
+  const { width } = useWindowDimensions();
+  const imageW = width * 0.7;
+  const imageH = imageW * 1.4;
   const scrollX = React.useRef(new Animated.Value(0)).current;
   let scrollOffset = React.useRef(new Animated.Value(0)).current;
   const keyExtractor = React.useCallback((_, index) => index.toString(), []);
@@ -91,22 +89,25 @@ const ButtonNavigation = () => {
   const viewConfigRef = React.useRef({
     itemVisiblePercentThreshold: 50,
   });
-  const renderItem = React.useCallback(({ item }) => {
-    return (
-      <View style={[styles.itemContainer]}>
-        <Animated.Image
-          style={[
-            {
-              width: imageW,
-              height: imageH,
-            },
-            styles.image,
-          ]}
-          source={{ uri: item.image }}
-        />
-      </View>
-    );
-  }, []);
+  const renderItem = React.useCallback(
+    ({ item }) => {
+      return (
+        <View style={[styles.itemContainer, { width }]}>
+          <Animated.Image
+            style={[
+              {
+                width: imageW,
+                height: imageH,
+              },
+              styles.image,
+            ]}
+            source={{ uri: item.image }}
+          />
+        </View>
+      );
+    },
+    [imageH, imageW, width]
+  );
   return (
     <View style={[styles.container]}>
       <StatusBar hidden />
@@ -191,7 +192,6 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     flex: 1,
-    width,
     justifyContent: 'center',
     alignItems: 'center',
   },

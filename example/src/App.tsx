@@ -4,8 +4,8 @@ import {
   View,
   Text,
   Animated,
-  Dimensions,
   FlatList,
+  useWindowDimensions,
 } from 'react-native';
 import {
   ScalingDot,
@@ -53,7 +53,7 @@ const INTRO_DATA = [
   },
 ];
 const App = () => {
-  const { width } = Dimensions.get('screen');
+  const { width } = useWindowDimensions();
   const scrollX = React.useRef(new Animated.Value(0)).current;
   const renderItem = React.useCallback(
     ({ item }) => {
