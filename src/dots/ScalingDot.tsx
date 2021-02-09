@@ -1,12 +1,11 @@
 import React from 'react';
 import {
-  View,
-  Dimensions,
   Animated,
   StyleSheet,
+  useWindowDimensions,
+  View,
   ViewStyle,
 } from 'react-native';
-
 export interface ScalingDotProps {
   data: Array<Object>;
   scrollX: Animated.Value;
@@ -18,8 +17,6 @@ export interface ScalingDotProps {
   activeDotColor?: string;
 }
 
-const { width } = Dimensions.get('screen');
-
 const ScalingDot = ({
   scrollX,
   data,
@@ -30,6 +27,8 @@ const ScalingDot = ({
   activeDotScale,
   activeDotColor,
 }: ScalingDotProps) => {
+  const { width } = useWindowDimensions();
+
   const defaultProps = {
     inActiveDotColor: inActiveDotColor || '#347af0',
     activeDotColor: activeDotColor || '#347af0',

@@ -1,13 +1,12 @@
 import React from 'react';
 import {
-  View,
   Animated,
-  Dimensions,
-  ViewStyle,
   StyleSheet,
+  useWindowDimensions,
+  View,
+  ViewStyle,
 } from 'react-native';
 import { Line, Svg } from 'react-native-svg';
-
 export interface LiquidLikeProps {
   data: Array<Object>;
   scrollX: Animated.Value;
@@ -26,7 +25,6 @@ export interface LiquidLikeProps {
 
 const AnimatedLine = Animated.createAnimatedComponent(Line);
 const AnimatedSvg = Animated.createAnimatedComponent(Svg);
-const { width } = Dimensions.get('screen');
 const LiquidLike = ({
   scrollX,
   data,
@@ -42,6 +40,8 @@ const LiquidLike = ({
   strokeWidth,
   bigHeadScale,
 }: LiquidLikeProps) => {
+  const { width } = useWindowDimensions();
+
   const defaultProps = {
     dotSize: dotSize || 12,
     marginHorizontal: marginHorizontal || 6,
