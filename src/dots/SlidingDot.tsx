@@ -61,7 +61,7 @@ const SlidingDot = ({
           // eslint-disable-next-line react-native/no-inline-styles
           {
             position: 'absolute',
-            marginHorizontal: marginHorizontal,
+            marginHorizontal: defaultProps.marginHorizontal,
             transform: [{ translateX }],
           },
           slidingIndicatorStyle,
