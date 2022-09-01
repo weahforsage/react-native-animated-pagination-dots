@@ -23,7 +23,7 @@
     "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "prepare": "bob build",
+    "prepare": "bob build && husky install",
     "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
@@ -42,29 +42,34 @@
   },
   "homepage": "https://github.com/weahforsage/react-native-animated-pagination-dots#readme",
   "devDependencies": {
-    "@commitlint/config-conventional": "^8.3.4",
-    "@react-native-community/bob": "^0.16.2",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "@release-it/conventional-changelog": "^1.1.4",
-    "@types/jest": "^26.0.0",
-    "@types/react": "^16.9.19",
-    "@types/react-native": "0.62.13",
-    "commitlint": "^8.3.5",
-    "eslint": "^7.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "husky": "^4.2.5",
-    "jest": "^26.0.1",
+    "@babel/eslint-parser": "^7.18.9",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@react-native-community/eslint-config": "^3.1.0",
+    "@release-it/conventional-changelog": "^5.1.0",
+    "@types/jest": "^29.0.0",
+    "@types/react": "^18.0.18",
+    "@types/react-native": "0.69.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "commitlint": "^17.1.2",
+    "eslint": "^8.23.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.0",
+    "jest": "^29.0.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "16.11.0",
-    "react-native": "0.62.2",
-    "release-it": "^13.5.8",
-    "typescript": "^3.8.3"
+    "react": "^18.0.18",
+    "react-native": "0.69.5",
+    "react-native-builder-bob": "^0.18.3",
+    "react-native-svg": "^13.1.0",
+    "release-it": "^15.4.1",
+    "typescript": "^4.8.2"
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-svg": "*"
   },
   "jest": {
     "preset": "react-native",
@@ -72,12 +77,6 @@
       "<rootDir>/example/node_modules",
       "<rootDir>/lib/"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint && yarn typescript"
-    }
   },
   "commitlint": {
     "extends": [
@@ -130,7 +129,7 @@
     "trailingComma": "es5",
     "useTabs": false
   },
-  "@react-native-community/bob": {
+  "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
     "targets": [
@@ -138,8 +137,5 @@
       "module",
       "typescript"
     ]
-  },
-  "dependencies": {
-    "react-native-svg": "^12.1.0"
   }
 }

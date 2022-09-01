@@ -8,9 +8,10 @@ import {
   StatusBar,
   useWindowDimensions,
 } from 'react-native';
-import { LiquidLike } from 'react-native-animated-pagination-dots';
+import {LiquidLike} from 'react-native-animated-pagination-dots';
+import type {ImageDataProps} from './BigHead';
 
-const data = [
+const data: ImageDataProps[] = [
   {
     image:
       'https://cdn.dribbble.com/users/3281732/screenshots/13661330/media/1d9d3cd01504fa3f5ae5016e5ec3a313.jpg?compress=1&resize=1200x1200',
@@ -30,12 +31,15 @@ const data = [
 ];
 
 const ButtonNavigation = () => {
-  const { width } = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const imageW = width * 0.7;
   const imageH = imageW * 1.4;
   const scrollX = React.useRef(new Animated.Value(0)).current;
   let scrollOffset = React.useRef(new Animated.Value(0)).current;
-  const keyExtractor = React.useCallback((_, index) => index.toString(), []);
+  const keyExtractor = React.useCallback(
+    (_: ImageDataProps, index: number) => index.toString(),
+    [],
+  );
   //Current item index of FlatList
   const [activeIndex, setActiveIndex] = React.useState(0);
   let flatListRef = React.useRef(null);
@@ -83,16 +87,16 @@ const ButtonNavigation = () => {
     scrollOffset.setValue(width * (data.length - 1));
   };
   //FlatList props that calculates current item index from viewableItems
-  const onViewRef = React.useRef(({ viewableItems }: any) => {
+  const onViewRef = React.useRef(({viewableItems}: any) => {
     setActiveIndex(viewableItems[0]?.index);
   });
   const viewConfigRef = React.useRef({
     itemVisiblePercentThreshold: 50,
   });
   const renderItem = React.useCallback(
-    ({ item }) => {
+    ({item}: {item: ImageDataProps}) => {
       return (
-        <View style={[styles.itemContainer, { width }]}>
+        <View style={[styles.itemContainer, {width}]}>
           <Animated.Image
             style={[
               {
@@ -101,12 +105,12 @@ const ButtonNavigation = () => {
               },
               styles.image,
             ]}
-            source={{ uri: item.image }}
+            source={{uri: item.image}}
           />
         </View>
       );
     },
-    [imageH, imageW, width]
+    [imageH, imageW, width],
   );
   return (
     <View style={[styles.container]}>
@@ -134,16 +138,16 @@ const ButtonNavigation = () => {
         decelerationRate={'normal'}
         scrollEventThrottle={16}
         onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          [{nativeEvent: {contentOffset: {x: scrollX}}}],
           {
             useNativeDriver: true,
-          }
+          },
         )}
         onMomentumScrollEnd={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollOffset } } }],
+          [{nativeEvent: {contentOffset: {x: scrollOffset}}}],
           {
             useNativeDriver: false,
-          }
+          },
         )}
       />
       <LiquidLike
@@ -159,14 +163,12 @@ const ButtonNavigation = () => {
       <View style={[styles.buttonContainer]}>
         <TouchableOpacity
           style={[styles.button]}
-          onPress={() => gotoPrevPage()}
-        >
+          onPress={() => gotoPrevPage()}>
           <Text style={[styles.buttonText]}>Previous</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.button]}
-          onPress={() => gotoNextPage()}
-        >
+          onPress={() => gotoNextPage()}>
           <Text style={[styles.buttonText]}>Next</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.button]} onPress={() => skipToStart()}>
