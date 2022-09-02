@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -13,6 +13,12 @@ import {
   ExpandingDot,
   SlidingDot,
 } from 'react-native-animated-pagination-dots';
+
+interface ItemProps {
+  key: string;
+  title: string;
+  description: string;
+}
 
 const INTRO_DATA = [
   {
@@ -52,21 +58,22 @@ const INTRO_DATA = [
       'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. ',
   },
 ];
+
 const App = () => {
-  const { width } = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const scrollX = React.useRef(new Animated.Value(0)).current;
   const renderItem = React.useCallback(
-    ({ item }) => {
+    ({item}: {item: ItemProps}) => {
       return (
-        <View style={[styles.itemContainer, { width: width - 80 }]}>
+        <View style={[styles.itemContainer, {width: width - 80}]}>
           <Text>{item.title}</Text>
           <Animated.Text>{item.description}</Animated.Text>
         </View>
       );
     },
-    [width]
+    [width],
   );
-  const keyExtractor = React.useCallback((item) => item.key, []);
+  const keyExtractor = React.useCallback((item: ItemProps) => item.key, []);
   return (
     <View style={[styles.container]}>
       <FlatList
@@ -74,10 +81,10 @@ const App = () => {
         keyExtractor={keyExtractor}
         showsHorizontalScrollIndicator={false}
         onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          [{nativeEvent: {contentOffset: {x: scrollX}}}],
           {
             useNativeDriver: false,
-          }
+          },
         )}
         style={styles.flatList}
         pagingEnabled
@@ -96,15 +103,8 @@ const App = () => {
             inActiveDotColor={'#347af0'}
             activeDotColor={'#347af0'}
             inActiveDotOpacity={0.5}
-            dotStyle={{
-              width: 10,
-              height: 10,
-              borderRadius: 5,
-              marginHorizontal: 3,
-            }}
-            containerStyle={{
-              top: 30,
-            }}
+            dotStyle={styles.dotStyles}
+            containerStyle={styles.constainerStyles}
           />
         </View>
         <View style={styles.dotContainer}>
@@ -112,9 +112,7 @@ const App = () => {
           <ScalingDot
             data={INTRO_DATA}
             scrollX={scrollX}
-            containerStyle={{
-              top: 30,
-            }}
+            containerStyle={styles.constainerStyles}
             inActiveDotColor={'#347af0'}
             activeDotColor={'#347af0'}
           />
@@ -123,7 +121,7 @@ const App = () => {
         <View style={styles.dotContainer}>
           <Text>Sliding Border</Text>
           <SlidingBorder
-            containerStyle={{ top: 30 }}
+            containerStyle={styles.constainerStyles}
             data={INTRO_DATA}
             scrollX={scrollX}
             dotSize={24}
@@ -135,7 +133,7 @@ const App = () => {
           <Text>Sliding Dot</Text>
           <SlidingDot
             marginHorizontal={3}
-            containerStyle={{ top: 30 }}
+            containerStyle={styles.constainerStyles}
             data={INTRO_DATA}
             scrollX={scrollX}
             dotSize={12}
@@ -161,6 +159,15 @@ const styles = StyleSheet.create({
   dotContainer: {
     justifyContent: 'center',
     alignSelf: 'center',
+  },
+  dotStyles: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 3,
+  },
+  constainerStyles: {
+    top: 30,
   },
   itemContainer: {
     backgroundColor: '#fff',

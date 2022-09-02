@@ -1,16 +1,11 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Animated,
-  StatusBar,
-} from 'react-native';
-import { LiquidLike } from 'react-native-animated-pagination-dots';
+import {StyleSheet, View, Dimensions, Animated, StatusBar} from 'react-native';
+import {LiquidLike} from 'react-native-animated-pagination-dots';
+import type {ImageDataProps} from './BigHead';
 
-const { width } = Dimensions.get('screen');
+const {width} = Dimensions.get('screen');
 
-const data = [
+const data: ImageDataProps[] = [
   {
     image:
       'https://cdn.dribbble.com/users/3281732/screenshots/13661330/media/1d9d3cd01504fa3f5ae5016e5ec3a313.jpg?compress=1&resize=1200x1200',
@@ -35,10 +30,13 @@ const imageH = imageW * 1.4;
 const WormDotExample = () => {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   let scrollOffset = React.useRef(new Animated.Value(0)).current;
-  const keyExtractor = React.useCallback((_, index) => index.toString(), []);
+  const keyExtractor = React.useCallback(
+    (_: ImageDataProps, index: number) => index.toString(),
+    [],
+  );
   //Current item index of FlatList
   let flatListRef = React.useRef(null);
-  const renderItem = React.useCallback(({ item }) => {
+  const renderItem = React.useCallback(({item}: {item: ImageDataProps}) => {
     return (
       <View style={[styles.itemContainer]}>
         <Animated.Image
@@ -49,7 +47,7 @@ const WormDotExample = () => {
             },
             styles.image,
           ]}
-          source={{ uri: item.image }}
+          source={{uri: item.image}}
         />
       </View>
     );
@@ -78,16 +76,16 @@ const WormDotExample = () => {
         decelerationRate={'normal'}
         scrollEventThrottle={16}
         onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+          [{nativeEvent: {contentOffset: {x: scrollX}}}],
           {
             useNativeDriver: true,
-          }
+          },
         )}
         onMomentumScrollEnd={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollOffset } } }],
+          [{nativeEvent: {contentOffset: {x: scrollOffset}}}],
           {
             useNativeDriver: false,
-          }
+          },
         )}
       />
       <LiquidLike
@@ -99,7 +97,7 @@ const WormDotExample = () => {
         marginHorizontal={8}
         inActiveDotOpacity={0.3}
         activeDotColor={'#fff'}
-        containerStyle={{ bottom: 60 }}
+        containerStyle={styles.containerStyles}
         wormDot
       />
     </View>
@@ -125,6 +123,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  containerStyles: {bottom: 60},
 });
 
 export default WormDotExample;

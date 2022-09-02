@@ -36,9 +36,16 @@ project.xcworkspace
 local.properties
 android.iml
 
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+
 # Cocoapods
 #
 example/ios/Pods
+/vendor/bundle/
+
 
 # node.js
 #
