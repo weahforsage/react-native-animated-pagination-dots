@@ -17,7 +17,7 @@ For more Copy & Paste stuff, go check [example](https://github.com/weahforsage/r
 ## TODO
 <ul>
     <li>
-        iOS Device Test
+        <strike>iOS Device Test</strike>
     </li>
     <li>
         <strike>Worm Dot Indicator</strike>

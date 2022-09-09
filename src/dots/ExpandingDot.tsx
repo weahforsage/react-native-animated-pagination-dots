@@ -38,7 +38,10 @@ const ExpandingDot = ({
   };
 
   return (
-    <View pointerEvents={'none'} style={[styles.containerStyle, containerStyle]}>
+    <View
+      pointerEvents={'none'}
+      style={[styles.containerStyle, containerStyle]}
+    >
       {data.map((_, index) => {
         const inputRange = [
           (index - 1) * width,

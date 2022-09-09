@@ -1,6 +1,6 @@
 {
   "name": "react-native-animated-pagination-dots",
-  "version": "0.1.72",
+  "version": "0.1.73",
   "description": "FlatList animated pagination dots",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
