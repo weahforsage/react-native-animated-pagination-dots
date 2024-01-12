@@ -15,6 +15,7 @@ export interface ExpandingDotProps {
   inActiveDotColor?: string;
   expandingDotWidth?: number;
   activeDotColor?: string;
+  itemWidth?: number;
 }
 
 const ExpandingDot = ({
@@ -26,6 +27,7 @@ const ExpandingDot = ({
   inActiveDotColor,
   expandingDotWidth,
   activeDotColor,
+  itemWidth,
 }: ExpandingDotProps) => {
   const { width } = useWindowDimensions();
 
@@ -44,9 +46,9 @@ const ExpandingDot = ({
     >
       {data.map((_, index) => {
         const inputRange = [
-          (index - 1) * width,
-          index * width,
-          (index + 1) * width,
+          (index - 1) * (itemWidth || width),
+          index * (itemWidth || width),
+          (index + 1) * (itemWidth || width),
         ];
 
         const colour = scrollX.interpolate({

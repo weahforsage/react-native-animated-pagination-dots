@@ -21,6 +21,7 @@ export interface LiquidLikeProps {
   strokeWidth?: number;
   bigHead?: boolean;
   bigHeadScale?: number;
+  itemWidth?: number;
 }
 
 const AnimatedLine = Animated.createAnimatedComponent(Line);
@@ -39,6 +40,7 @@ const LiquidLike = ({
   bigHead,
   strokeWidth,
   bigHeadScale,
+  itemWidth,
 }: LiquidLikeProps) => {
   const { width } = useWindowDimensions();
 
@@ -53,11 +55,11 @@ const LiquidLike = ({
     strokeWidth: strokeWidth || 8,
     bigHeadScale: bigHeadScale || 1,
   };
-  const inputRange = [0, width, width * 2];
+  const inputRange = [0, itemWidth || width, (itemWidth || width) * 2];
   const translateBack = React.useRef(new Animated.Value(0)).current;
   Animated.timing(translateBack, {
     toValue: scrollOffset.interpolate({
-      inputRange: [0, width],
+      inputRange: [0, itemWidth || width],
       outputRange: [
         defaultProps.dotSize / 2,
         defaultProps.dotSize +
@@ -124,7 +126,10 @@ const LiquidLike = ({
                 !bigHead
                   ? {
                       scale: Animated.modulo(
-                        Animated.modulo(Animated.divide(scrollX, width), width),
+                        Animated.modulo(
+                          Animated.divide(scrollX, itemWidth || width),
+                          itemWidth || width
+                        ),
                         1
                       ).interpolate({
                         inputRange: [0, 0.1, 0.9, 1],
