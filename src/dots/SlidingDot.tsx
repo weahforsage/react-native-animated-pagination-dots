@@ -34,7 +34,7 @@ const SlidingDot = ({
     dotSize: dotSize || 12,
     marginHorizontal: marginHorizontal || 3,
   };
-  const inputRange = [-(itemWidth ?? width), 0, itemWidth ?? width];
+  const inputRange = [-(itemWidth || width), 0, itemWidth || width];
   const translateX = scrollX.interpolate({
     inputRange,
     outputRange: [

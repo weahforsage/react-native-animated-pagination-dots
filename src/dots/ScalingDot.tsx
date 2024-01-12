@@ -43,9 +43,9 @@ const ScalingDot = ({
     <View style={[styles.containerStyle, containerStyle]}>
       {data.map((_, index) => {
         const inputRange = [
-          (index - 1) * (itemWidth ?? width),
-          index * (itemWidth ?? width),
-          (index + 1) * (itemWidth ?? width),
+          (index - 1) * (itemWidth || width),
+          index * (itemWidth || width),
+          (index + 1) * (itemWidth || width),
         ];
 
         const colour = scrollX.interpolate({

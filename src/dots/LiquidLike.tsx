@@ -55,11 +55,11 @@ const LiquidLike = ({
     strokeWidth: strokeWidth || 8,
     bigHeadScale: bigHeadScale || 1,
   };
-  const inputRange = [0, itemWidth ?? width, (itemWidth ?? width) * 2];
+  const inputRange = [0, itemWidth || width, (itemWidth || width) * 2];
   const translateBack = React.useRef(new Animated.Value(0)).current;
   Animated.timing(translateBack, {
     toValue: scrollOffset.interpolate({
-      inputRange: [0, itemWidth ?? width],
+      inputRange: [0, itemWidth || width],
       outputRange: [
         defaultProps.dotSize / 2,
         defaultProps.dotSize +
@@ -127,8 +127,8 @@ const LiquidLike = ({
                   ? {
                       scale: Animated.modulo(
                         Animated.modulo(
-                          Animated.divide(scrollX, itemWidth ?? width),
-                          itemWidth ?? width
+                          Animated.divide(scrollX, itemWidth || width),
+                          itemWidth || width
                         ),
                         1
                       ).interpolate({

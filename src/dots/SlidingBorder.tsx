@@ -35,7 +35,7 @@ const SlidingBorder = ({
     dotSize: dotSize || 24,
     borderPadding: borderPadding || -5,
   };
-  const inputRange = [-(itemWidth ?? width), 0, itemWidth ?? width];
+  const inputRange = [-(itemWidth || width), 0, itemWidth || width];
   const translateX = scrollX.interpolate({
     inputRange,
     outputRange: [
