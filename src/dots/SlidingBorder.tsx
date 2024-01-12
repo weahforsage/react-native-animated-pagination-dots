@@ -15,6 +15,7 @@ export interface SlidingBorderProps {
   dotStyle?: ViewStyle;
   dotContainerStyle?: ViewStyle;
   slidingIndicatorStyle?: ViewStyle;
+  itemWidth?: number;
 }
 
 const SlidingBorder = ({
@@ -26,6 +27,7 @@ const SlidingBorder = ({
   dotContainerStyle,
   slidingIndicatorStyle,
   borderPadding,
+  itemWidth,
 }: SlidingBorderProps) => {
   const { width } = useWindowDimensions();
 
@@ -33,7 +35,7 @@ const SlidingBorder = ({
     dotSize: dotSize || 24,
     borderPadding: borderPadding || -5,
   };
-  const inputRange = [-width, 0, width];
+  const inputRange = [-(itemWidth ?? width), 0, itemWidth ?? width];
   const translateX = scrollX.interpolate({
     inputRange,
     outputRange: [

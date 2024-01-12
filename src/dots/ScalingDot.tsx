@@ -15,6 +15,7 @@ export interface ScalingDotProps {
   inActiveDotColor?: string;
   activeDotScale?: number;
   activeDotColor?: string;
+  itemWidth?: number;
 }
 
 const ScalingDot = ({
@@ -26,6 +27,7 @@ const ScalingDot = ({
   inActiveDotColor,
   activeDotScale,
   activeDotColor,
+  itemWidth,
 }: ScalingDotProps) => {
   const { width } = useWindowDimensions();
 
@@ -41,9 +43,9 @@ const ScalingDot = ({
     <View style={[styles.containerStyle, containerStyle]}>
       {data.map((_, index) => {
         const inputRange = [
-          (index - 1) * width,
-          index * width,
-          (index + 1) * width,
+          (index - 1) * (itemWidth ?? width),
+          index * (itemWidth ?? width),
+          (index + 1) * (itemWidth ?? width),
         ];
 
         const colour = scrollX.interpolate({
