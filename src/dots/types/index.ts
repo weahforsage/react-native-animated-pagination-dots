@@ -20,6 +20,7 @@ export interface ScalingDotProps {
   dotStyle?: ViewStyle;
   inActiveDotOpacity?: inActiveDotOpacity;
   activeDotScale?: number;
+  itemWidth?: number;
 }
 
 export interface SlidingBorderProps {
@@ -31,6 +32,7 @@ export interface SlidingBorderProps {
   dotStyle?: ViewStyle;
   dotContainerStyle?: ViewStyle;
   slidingIndicatorStyle?: ViewStyle;
+  itemWidth?: number;
 }
 
 export interface SlidingDotProps {
@@ -42,4 +44,5 @@ export interface SlidingDotProps {
   dotContainerStyle?: ViewStyle;
   slidingIndicatorStyle?: ViewStyle;
   marginHorizontal?: number;
+  itemWidth?: number;
 }
